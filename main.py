@@ -1,3 +1,5 @@
+import csv
+
 from time import perf_counter
 
 def fact(n):
@@ -13,11 +15,14 @@ def fib_bad(n):
     return 1
 
 def main():
-  for i in range(20):
-    exe_time = perf_counter()
-    fib_val = fib_bad(i)
-    exe_time = perf_counter() - exe_time
-    print(f"{i}, {fib_val}, {exe_time}")
+  with open("fib_bad.csv", 'w', newline='') as csvfile: 
+    csvwriter = csv.writer(csvfile)
+    for i in range(50):
+      exe_time = perf_counter()
+      fib_val = fib_bad(i)
+      exe_time = perf_counter() - exe_time
+      #print(f"{i}, {fib_val}, {exe_time}")
+      csvwriter.writerow([i, fib_val, exe_time])
 
 if __name__ == "__main__":
   main()
