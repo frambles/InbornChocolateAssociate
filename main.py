@@ -17,7 +17,7 @@ def fib_bad(n):
 def main():
   with open("fib_bad.csv", 'w', newline='') as csvfile: 
     csvwriter = csv.writer(csvfile)
-    for i in range(30):
+    for i in range(40):
 
       print(f"running iteration {i}...")
       fib_time = perf_counter()
