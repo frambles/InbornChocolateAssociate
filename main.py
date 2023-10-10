@@ -28,15 +28,15 @@ def fib(n):
 
 
 def sorter(n):
-    mylist = list(range(n)):
-
-
+    mylist = list(range(n))
+    shuffle(mylist)
+    mylist.sort()
 
 
 def main():
     with open("fib_bad.csv", 'w', newline='') as csvfile: 
         csvwriter = csv.writer(csvfile)
-        for i in range(30):
+        for i in range(40):
 
             print(f"running iteration {i}...")
             fib_time = perf_counter()
@@ -50,12 +50,15 @@ def main():
             fibnew_time = perf_counter()
             fibnew_val = fib(i)
             fibnew_time = perf_counter() - fibnew_time
+
+            sort_time = perf_counter()
+            sort_time = perf_counter() - sort_time
             
             # print(f"{i}, {fib_val}, {exe_time}")
-            csvwriter.writerow([i, fib_val, fact_val, fibnew_val, fib_time, fact_time, fibnew_time])
+            csvwriter.writerow([i, fib_val, fact_val, fibnew_val, fib_time, fact_time, fibnew_time, sort_time])
             # csvwriter.writerow([i, fibnew_val, fibnew_time])
 
 
 if __name__ == "__main__":
     main()
-    #blah
+#blah
